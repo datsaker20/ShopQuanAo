@@ -1,0 +1,101 @@
+﻿@model ShopBanDo.Areas.Client.Models.Cart
+
+@{
+    ViewBag.Title = "ShowToCart";
+    Layout = "~/Areas/Client/Views/Shared/_LayoutClient.cshtml";
+}
+
+<div class="small-container cart-page" >
+
+    @if (Model != null)
+    {
+        <table class="table table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Tên Sản Phẩm</th>
+                    <th>Hình Ảnh</th>
+                    <th>Giá</th>
+                    <th>Số Lượng</th>
+                    <th>Tổng</th>
+                    <th>Xóa Sản Phẩm</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Items)
+                {
+                    double total = Convert.ToDouble(item.shopping_sanpham.GiaKhuyenMai.Value * item.shopping_sl);
+                    <tr>
+                        <td>@item.shopping_sanpham.TenSanPham</td>
+                        <td><img src="~/Areas/FileUpload/@item.shopping_sanpham.HinhAnh" style="width:100px; height:100px" /></td>
+                        <td>$@item.shopping_sanpham.GiaKhuyenMai</td>
+                        <td>
+                            @using (Html.BeginForm("Update_sl_Cart", "ShoppingCart"))
+                            {
+                                <input type="hidden" value="@item.shopping_sanpham.id" name="ID_Sp" />
+                                <input type="number" value="@item.shopping_sl" name="Soluong" />
+                                <input type="submit" value="Cập Nhật" />
+
+                            }
+
+                        </td>
+                        <td>Giá  $@total</td>
+                        <td>
+                            <a href="/Client/ShoppingCart/RemoveCart/@item.shopping_sanpham.id">Xóa</a>
+                        </td>
+
+                    </tr>
+
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="5">
+                        @using (Html.BeginForm("CheckOut","ShoppingCart"))
+                        {
+
+
+                            <table class="table table-bordered table-striped table-hover">
+                                <tr>
+                                    <td>
+                                        Mã Khách Hàng:
+                                    </td>
+                                    <td>
+                                        <input style="width:75%" type="text" name="MaKh" required />
+                                    </td>
+                                    <td>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+
+                                       Đến Địa Chỉ:
+                                    </td>
+                                    <td>
+
+                                        <input style="width:75%" type="text" name="Mota_KH" required />
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><a style="width:75%" href="@Url.Action("Create","KhachHang")" class="btn-light-primary btn-success">Đăng Ký Mới</a></td>
+                                    <td><input style="width:75%" type="submit" value="Check Out" class="btn-success" /></td>
+                                </tr>
+                            </table>
+                        }
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="5">
+                        Tổng Tiền: $@Model.Total_Money()
+
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <a href="@Url.Action("Index","Home")"> Tiếp Tục Mua Sản Phẩm</a>
+    }
+</div>

@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Upload";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Upload</h2>
+<div>
+    <label>File Name</label> <label>@ViewBag.FileName</label>
+
+</div>
+<div>
+    <label>File Type</label> <label>@ViewBag.FileType</label>
+
+</div>
+<div>
+    <label>File Size</label> <label>@ViewBag.FileSize</label>
+
+</div>
+<div>
+    <img src="~/Areas/FileUpload/@ViewBag.FileName" />
+
+</div>
+
+
+

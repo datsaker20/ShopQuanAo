@@ -1,0 +1,100 @@
+﻿@model IEnumerable<ShopBanDo.Areas.Admin.Models.Framework.SanPham>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="card-title">
+    <h4 class="mb-0">Quản lý danh mục</h4>
+</div>
+
+<p>
+    @Html.ActionLink("Thêm Mới", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table table-bordered table-striped table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenSanPham)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GiaBan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GiaKhuyenMai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MoTa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThongTinChiTiet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TenVietTat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoLuong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HinhAnh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DanhMuc.TenLoai)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenSanPham)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GiaBan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GiaKhuyenMai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MoTa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThongTinChiTiet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenVietTat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoLuong)
+            </td>
+            <td>
+                <img src="~/Areas/FileUpload/@Url.Content(item.HinhAnh)" style="height:50px;width:50px;margin:10px" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DanhMuc.TenLoai)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
+
+</table>
+@section Scripts{
+    <script src="~/Areas/Admin/Assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            //Default data table
+            $('#example').DataTable();
+            var table = $('#example2').DataTable({
+                lengthChange: false,
+                buttons: ['copy', 'excel', 'pdf', 'print', 'colvis']
+            });
+            table.buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
+        });
+
+    </script>
+}

@@ -1,0 +1,141 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mưa Shop</title>
+    <link rel="stylesheet" href="~/Areas/Client/Assets/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <a href="@Url.Action("Index","Home")"><img src="~/Areas/Client/Assets/images/Logomessi.png" alt="logo" width="100px"></a>
+                </div>
+                <nav>
+                    <ul id="MenuItems">
+                        <li><a href="index.html">Trang Chủ</a></li>
+                        <li><a href="products.html">Sản Phẩm</a></li>
+                        <li><a href="">Liên Hệ</a></li>
+                        <li><a href="account.html">Tài Khoản</a></li>
+                    </ul>
+                </nav>
+                <a href="@Url.Action("ShowToCart","ShoppingCart")">
+                    <img src="@Url.Content("~/Areas/Client/Assets/images/cart.png")" width="30px" height="30px">
+                    @Html.Action("BagCart", "ShoppingCart")
+
+                </a>
+                <img src="~/Areas/Client/Assets/images/menu.png" class="menu-icon" onclick="menutoggle()">
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <h1>Sản Phẩm Mới<br> Phong Cách Mới</h1>
+                    <p>
+                        Sản phẩm của chúng tôi luôn phù hợp với ví tiền của bạn <br> Cho dù bạn hết tiền chúng tôi sẽ
+                        không bán cho bạn.
+                    </p>
+                    <a href="" class="btn">Mua Ngay &#8594;</a>
+                </div>
+                <div class="col-2">
+                    <img src="~/Areas/Client/Assets/images/banner-sidepic.png">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @RenderBody()
+
+
+    <div class="brands">
+        <h2 class="title">Nhà tài trợ</h2>
+        <div class="small-container">
+            <div class="row">
+                <div class="col-5">
+                    <img src="~/Areas/Client/Assets/images/logo-godrej.png">
+                </div>
+                <div class="col-5">
+                    <img src="~/Areas/Client/Assets/images/logo-oppo.png">
+                </div>
+                <div class="col-5">
+                    <img src="~/Areas/Client/Assets/images/logo-coca-cola.png">
+                </div>
+                <div class="col-5">
+                    <img src="~/Areas/Client/Assets/images/logo-paypal.png">
+                </div>
+                <div class="col-5">
+                    <img src="~/Areas/Client/Assets/images/logo-philips.png">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-1">
+                    <h3>Tải ứng dụng</h3>
+                    <p>Tải xuống ứng dụng cho điện thoại di động Android và iOS .</p>
+                    <div class="app-logo">
+                        <img src="~/Areas/Client/Assets/images/play-store.png">
+                        <img src="~/Areas/Client/Assets/images/app-store.png">
+                    </div>
+                </div>
+                <div class="footer-col-2">
+                    <img src="~/Areas/Client/Assets/images/Logomessi.png">
+                    <p>
+                        Mục đích của chúng tôi là Làm cho nhiều người có thể tiếp cận được niềm vui và lợi ích của thể
+                        thao một cách bền vững.
+                    </p>
+                </div>
+                <div class="footer-col-3">
+                    <h3>Các liên kết khác</h3>
+                    <ul>
+                        <li>Mã Giảm Giá</li>
+                        <li>Trang Blog</li>
+                        <li>Chính Sách</li>
+                        <li>Làm CTV</li>
+                    </ul>
+                </div>
+                <div class="footer-col-4">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li>Facebook</li>
+                        <li>Twitter</li>
+                        <li>Instagram</li>
+                        <li>Youtube</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">Thiết kế bởi Trần Viết Đạt</p>
+        </div>
+    </div>
+    <script>
+        var MenuItems = document.getElementById("MenuItems");
+        MenuItems.style.maxHeight = "0px";
+
+        function menutoggle() {
+            if (MenuItems.style.maxHeight == "0px") {
+                MenuItems.style.maxHeight = "200px"
+            } else {
+                MenuItems.style.maxHeight = "0px"
+            }
+        }
+    </script>
+
+</body>
+@RenderSection("Scripts", false)
+@Scripts.Render("~/bundles/jqueryval")
+</html>

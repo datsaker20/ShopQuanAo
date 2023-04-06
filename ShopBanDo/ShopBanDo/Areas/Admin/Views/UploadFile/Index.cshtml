@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<form action="/Admin/UploadFile/Upload" method="post" enctype="multipart/form-data">
+    <div>Hinh Ảnh</div>
+    <input name="image" type="file" />
+    <input type="submit" value="Upload" />
+</form>
+

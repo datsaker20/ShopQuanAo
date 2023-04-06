@@ -1,0 +1,30 @@
+﻿@model  List<ShopBanDo.Areas.Admin.Models.Framework.SanPham>
+<h2 class="title"> @ViewBag.ct.TenLoai Products</h2>
+<div> 
+<ul>
+    <li>
+        <div class="row">
+
+
+            @foreach (var item in Model)
+            {
+
+            <div class="col-4">
+                <a href="/Client/Detail/Index/@item.id"><img src="~/Areas/FileUpload/@item.HinhAnh"></a>
+                <h4 class="product-img">@item.TenSanPham</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p class="total-price">$@item.GiaKhuyenMai<del style="margin-left: 5px; font-size: 14px;">$@item.GiaBan</del></p>
+              <a href="/Client/ShoppingCart/AddtoCart/@item.id"><button type="button" class="btn btn-cart">Add</button></a>  
+            </div>
+            
+            }
+            </div>
+    </li>
+</ul>
+</div>

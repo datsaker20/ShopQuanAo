@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Client/Views/Shared/_LayoutClient.cshtml";
+}
+
+<div class="categories">
+    <div class="small-container">
+        <div class="row">
+            <div class="col-3">
+                <img src="~/Areas/Client/Assets/images/category-1.jpg">
+            </div>
+            <div class="col-3">
+                <img src="~/Areas/Client/Assets/images/category-2.jpg">
+            </div>
+            <div class="col-3">
+                <img src="~/Areas/Client/Assets/images/category-3.jpg">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="small-container">
+    @Html.Action("DanhMucSanPham", new { @idLoai = 1 })
+    @Html.Action("DanhMucSanPham", new { @idLoai = 2 })
+
+
+</div>
+<div class="offer">
+    <div class="small-container">
+        <div class="row">
+            <div class="col-2">
+                <img src="~/Areas/Client/Assets/images/aoquandung.png" class="offer-img">
+            </div>
+            <div class="col-2">
+                <p>Hàng không bán</p>
+                <h1>Áo thợ săn</h1>
+                <small>
+                    Thiết kế sang trọng,mát mẻ,dự trên mẫu thiết kế quần của những năm 50 phù hợp với mọi đối
+                    tượng từ
+                    người già đến trẻ em. Khi măc lên cảm thấy tự tin khí phách của người lính cụ hồ.<br>
+                </small>
+                <a href="products.html" class="btn">Buy Now &#8594;</a>
+            </div>
+        </div>
+    </div>
+</div>
+
